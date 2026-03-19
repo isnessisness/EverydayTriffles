@@ -1,0 +1,49 @@
+<Window x:Class="IdPhotoEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="全能证件照换底系统 (支持红/白/蓝智能互换)" Height="680" Width="1000" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="1. 原始照片 (全自动识别红/白/蓝底)" Grid.Column="0" Margin="5">
+                <Image x:Name="ImgOriginal" Stretch="Uniform"/>
+            </GroupBox>
+
+            <GroupBox Header="2. 换底结果 (实时预览)" Grid.Column="1" Margin="5">
+                <Border Background="#F0F0F0">
+                    <Image x:Name="ImgResult" Stretch="Uniform"/>
+                </Border>
+            </GroupBox>
+        </Grid>
+
+        <Border Grid.Row="1" Background="#F8F9FA" BorderBrush="#E9ECEF" BorderThickness="0,1,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
+                    <TextBlock Text="🎯 选择目标底色：" VerticalAlignment="Center" Margin="0,0,15,0" FontSize="15" FontWeight="Bold"/>
+
+                    <RadioButton x:Name="RbRed" Content="红底 (纯红)" Foreground="Red" FontSize="15" FontWeight="Bold" Margin="10,0" Checked="Color_Changed"/>
+                    <RadioButton x:Name="RbWhite" Content="白底 (纯白)" Foreground="Black" FontSize="15" FontWeight="Bold" Margin="10,0" Checked="Color_Changed"/>
+                    <RadioButton x:Name="RbLightBlue" Content="浅蓝 (R:0 G:191 B:243)" Foreground="#00BFF3" FontSize="15" FontWeight="Bold" Margin="10,0" IsChecked="True" Checked="Color_Changed"/>
+                    <RadioButton x:Name="RbDarkBlue" Content="深蓝 (R:67 G:142 B:219)" Foreground="#438EDB" FontSize="15" FontWeight="Bold" Margin="10,0" Checked="Color_Changed"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="1. 📂 读取照片" Width="140" Height="40" Margin="10,0" Click="BtnLoad_Click" FontSize="14"/>
+                    <Button Content="2. ⚡ 智能提取并换底" Width="160" Height="40" Margin="10,0" Click="BtnProcess_Click" Background="#28A745" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                    <Button Content="3. 💾 保存当前结果" Width="140" Height="40" Margin="10,0" Click="BtnSave_Click" Background="#0078D7" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
